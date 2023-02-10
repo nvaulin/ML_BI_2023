@@ -55,10 +55,12 @@ class KNNClassifier:
            with distances between each test and each train sample
         """
         
-        """
-        YOUR CODE IS HERE
-        """
-        pass
+        distances  = np.zeros((len(X), len(self.train_X)))
+        for i in range(len(X)):
+            for j in range(len(self.train_X)):
+                distances[i][j] =  np.linalg.norm(self.train_X[j] - X[i], ord=1)
+
+        return distances
 
 
     def compute_distances_one_loop(self, X):
@@ -74,10 +76,11 @@ class KNNClassifier:
            with distances between each test and each train sample
         """
 
-        """
-        YOUR CODE IS HERE
-        """
-        pass
+        distances  = np.zeros((len(X), len(self.train_X)))
+        for i in range(len(X)):
+            distances[i] = np.linalg.norm(self.train_X - X[i], ord=1, axis = 1)
+
+        return distances
 
 
     def compute_distances_no_loops(self, X):
@@ -93,10 +96,10 @@ class KNNClassifier:
            with distances between each test and each train sample
         """
 
-        """
-        YOUR CODE IS HERE
-        """
-        pass
+        X_reshaped = X.reshape(X.shape[0], 1, X.shape[1])
+        distances = np.linalg.norm(self.train_X - X_reshaped, ord=1, axis=2)
+
+        return distances
 
 
     def predict_labels_binary(self, distances):
