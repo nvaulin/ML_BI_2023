@@ -69,7 +69,7 @@ def r_squared(y_pred, y_true, force_finite=True):
     if ss_total == 0:
         r2 = int(np.array_equal(y_true, y_pred))
     else:
-        r2 = 1 - np.sum((y_true - y_pred) ** 2) / ss_total
+        r2 = 1 - (np.sum((y_true - y_pred) ** 2) / ss_total)
 
     if not force_finite and r2 in (0, 1):
         r2 = non_finite_scores[r2]
