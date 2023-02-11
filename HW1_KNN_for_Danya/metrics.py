@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def binary_classification_metrics(y_pred, y_true, pos = 1):
+def binary_classification_metrics(y_pred, y_true, pos=1):
     """
     Computes metrics for binary classification
     Arguments:
@@ -36,6 +36,7 @@ def binary_classification_metrics(y_pred, y_true, pos = 1):
 
     accuracy = multiclass_accuracy(y_pred, y_true)
     return precision, recall, f1, accuracy
+
 
 def multiclass_accuracy(y_pred, y_true):
     """
@@ -86,8 +87,8 @@ def mse(y_pred, y_true):
     mse - mean squared error
     """
 
-    mse = np.sum((y_true - y_pred) ** 2) /  np.size(y_true)
-    
+    mse = np.sum((y_true - y_pred) ** 2) / np.size(y_true)
+
     return mse
 
 
@@ -101,6 +102,6 @@ def mae(y_pred, y_true):
     mae - mean absolut error
     """
 
-    mae = np.sum(abs(y_true - y_pred)) /  np.size(y_true)
-    
+    mae = np.sum(abs(y_true - y_pred)) / np.size(y_true)
+
     return mae
