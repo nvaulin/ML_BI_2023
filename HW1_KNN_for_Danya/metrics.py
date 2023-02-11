@@ -18,8 +18,8 @@ def binary_classification_metrics(y_pred, y_true, pos = 1):
 
     tp = np.size(y_pred[(y_true == y_pred) & (y_pred == pos)])
     fp = np.size(y_pred[(y_true != y_pred) & (y_pred == pos)])
-    tn = np.size(y_pred[(y_true == y_pred) & (y_pred == pos)])
-    fn = np.size(y_pred[(y_true != y_pred) & (y_pred == pos)])
+    tn = np.size(y_pred[(y_true == y_pred) & (y_pred != pos)])
+    fn = np.size(y_pred[(y_true != y_pred) & (y_pred != pos)])
 
     try:
         precision = tp / (tp + fp)
@@ -34,7 +34,7 @@ def binary_classification_metrics(y_pred, y_true, pos = 1):
     except ZeroDivisionError:
         f1 = 0
 
-    accuracy = multiclass_accuracy(y_pred, y_true):
+    accuracy = multiclass_accuracy(y_pred, y_true)
     return precision, recall, f1, accuracy
 
 def multiclass_accuracy(y_pred, y_true):

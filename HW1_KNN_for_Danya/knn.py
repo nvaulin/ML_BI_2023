@@ -113,15 +113,10 @@ class KNNClassifier:
         pred, np array of bool (num_test_samples) - binary predictions 
            for every test sample
         """
+        
+        nearest_classes = np.take(self.train_y,distances.argsort(axis=1)[:,:self.k])
+        return np.array(list(map(lambda x: np.argmax(np.bincount(x)), nearest_classes)))
 
-        n_train = distances.shape[1]
-        n_test = distances.shape[0]
-        prediction = np.zeros(n_test)
-
-        """
-        YOUR CODE IS HERE
-        """
-        pass
 
 
     def predict_labels_multiclass(self, distances):
@@ -136,11 +131,5 @@ class KNNClassifier:
            for every test sample
         """
 
-        n_train = distances.shape[0]
-        n_test = distances.shape[0]
-        prediction = np.zeros(n_test, np.int)
-
-        """
-        YOUR CODE IS HERE
-        """
-        pass
+        nearest_classes = np.take(self.train_y,distances.argsort(axis=1)[:,:self.k])
+        return np.array(list(map(lambda x: np.argmax(np.bincount(x)), nearest_classes)))
